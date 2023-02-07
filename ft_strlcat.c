@@ -6,7 +6,7 @@
 /*   By: anasser <anasser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:49:37 by anasser           #+#    #+#             */
-/*   Updated: 2023/02/07 12:23:04 by anasser          ###   ########.fr       */
+/*   Updated: 2023/02/07 18:09:06 by anasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	size_t	src_idx;
 	size_t	value;
 
+	if (!dest || !src)
+		return (0);
 	if (size == 0)
 		return (ft_strlen(src));
 	else if (size < ft_strlen(dest))
@@ -37,8 +39,9 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	dest[idx] = '\0';
 	return (value);
 }
+/* 
+#include <stdio.h>
 
-/* #include <stdio.h>
 int	main(void)
  {
 	char src[20] = "Hello World!";

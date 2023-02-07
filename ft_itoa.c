@@ -6,80 +6,54 @@
 /*   By: anasser <anasser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 17:32:11 by anasser           #+#    #+#             */
-/*   Updated: 2023/02/07 14:27:15 by anasser          ###   ########.fr       */
+/*   Updated: 2023/02/07 16:41:26 by anasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrev(char *str)
+int	count(int nbr)
 {
-	int		idx;
-	int		size;
-	char	tmp;
+	int	i;
 
-	size = ft_strlen(str);
-	idx = 0;
-	while (idx < (size / 2))
+	if (nbr < 0)
+		i = 1;
+	else
+		i = 0;
+	while (1)
 	{
-		tmp = str[idx];
-		str[idx] = str[size - idx - 1];
-		str[size - idx - 1] = tmp;
-		idx++;
+		nbr = nbr / 10;
+		i++;
+		if (nbr == 0)
+			break ;
 	}
-	return (str);
-}
-
-int	ft_intlen(int n)
-{
-	int			idx;
-	long long	tmp;
-
-	tmp = n;
-	idx = 1;
-	if (tmp < 0)
-	{
-		tmp = tmp * -1;
-		idx++;
-	}
-	while (tmp >= 10)
-	{
-		tmp = tmp / 10;
-		idx++;
-	}
-	return (idx);
+	return (i);
 }
 
 char	*ft_itoa(int n)
 {
-	int				idx;
-	int				is_negative;
-	unsigned int	positive_n;
-	char			*value;
+	int			length;
+	char		*str;
+	long long	nbr;
 
-	if (n == 0)
-		return (ft_strdup("0"));
-	if (n < 0)
-	{
-		is_negative = 1;
-		positive_n = -n;
-	}
-	else
-	{
-		is_negative = 0;
-		positive_n = n;
-	}
-	value = (char *)malloc(sizeof(char) * (ft_intlen(n) + 1));
-	if (!value)
+	nbr = n;
+	length = count(nbr);
+	str = (char *)malloc(sizeof(char) * (length + 1));
+	if (!str)
 		return (NULL);
-	ft_memset(value, '\0', (ft_intlen(n) + 1));
-	idx = 0;
-	while (positive_n != 0)
+	if (nbr < 0)
 	{
-		value[idx++] = (positive_n % 10) + '0';
-		positive_n /= 10;
+		str[0] = '-';
+		nbr *= -1;
 	}
-	if (is_negative)
-		value[idx++] = '-';
-	return (ft_strrev(value));
+	str[length] = '\0';
+	while (1)
+	{
+		str[length - 1] = nbr % 10 + '0';
+		nbr /= 10;
+		length--;
+		if (nbr == 0)
+			break ;
+	}
+	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: anasser <anasser@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 15:24:15 by apple             #+#    #+#             */
-/*   Updated: 2023/02/06 18:31:57 by anasser          ###   ########.fr       */
+/*   Updated: 2023/02/07 14:55:54 by anasser          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,3 +22,4 @@ t_list	*ft_lstnew(void *content)
 	new->next = NULL;
 	return (new);
 }
+// jlkjkl
